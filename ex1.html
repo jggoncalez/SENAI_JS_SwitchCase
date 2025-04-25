@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dólar e Real</title>
+</head>
+<body>
+    <div>
+    Converter para: <input type="text" id="direction" value="real"> <br><br>
+    <input type="number" id="valorIns" placeholder = 00>
+
+    <button onclick="calcular()">Exibir Produto</button> </div>
+    <div id="resultado"></div>
+
+    <script>
+        let tx = parseFloat(5.68);
+        function calcular() {
+            let val = parseFloat(document.getElementById("valorIns").value);
+            let dir = document.getElementById("direction").value;
+            let total = 0;
+
+            switch (dir) {
+                case "real":
+                    total = parseFloat(val * tx);
+                    document.getElementById("resultado").innerHTML = `US$ ${val} -> R$ ${total}`;
+                    break;
+                case "dolar":
+                    total = parseFloat(val / tx);
+                    document.getElementById("resultado").innerHTML = `R$ ${val} -> US$ ${total}`;
+                    break;
+                default:
+                document.getElementById("resultado").innerHTML = `Conversão incorreta`;
+            }
+        }
+    </script>
+</body>
+</html>
