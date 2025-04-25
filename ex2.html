@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota</title>
+</head>
+<body>
+    <div>
+        Digite a nota: <input type="number" id="nota" value="0"> <br><br>
+        <button onclick="calcular()">Exibir resposta</button> 
+    </div>
+        <div id="resultado"></div>
+
+    <script>
+        function calcular() {
+            let nota = parseInt(document.getElementById("nota").value);
+            let resp = document.getElementById("resultado");
+
+            switch (nota) {
+                case 0:
+                case 1:
+                    resp.innerHTML = "Classificação F"
+                    break
+                case 2:
+                case 3:
+                    resp.innerHTML = "Classificação D-"
+                    break
+                case 4:
+                case 5:
+                    resp.innerHTML = "Classificação D+"
+                    break
+                case 6:
+                case 7:
+                    resp.innerHTML = "Classificação C"
+                    break
+                case 8:
+                case 9:
+                    resp.innerHTML = "Classificação B"
+                    break
+                case 10:
+                    resp.innerHTML = "Classificação A"
+                    break
+            }
+        }
+            
+    </script>
+</body>
+</html>
