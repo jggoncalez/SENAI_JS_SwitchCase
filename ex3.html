@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Área</title>
+</head>
+<body>
+    <div>
+        <label for="shape">Selecione a forma:</label>
+        <select id="shape">
+            <option value="quadrado">Quadrado</option>
+            <option value="circulo">Círculo</option>
+            <option value="triangulo">Triângulo</option>
+        </select>
+        <br><br>
+        Base: <input type="number" id="valor1" placeholder = 00> <br>
+        Altura: <input type="number" id="valor2" placeholder = 00>
+    
+        <button onclick="calcular()">Exibir resposta</button> </div>
+        <div id="resultado"></div>
+
+        <script>
+            function calcular(){
+                forma = document.getElementById("shape").value
+                val1 = document.getElementById("valor1").value
+                val2 = document.getElementById("valor2").value
+                total = 0
+                resp = ""
+                
+                switch (forma) {
+                    case "quadrado":
+                        total = parseFloat(val1 * val2)
+                        resp = `Área: ${total}`
+                        break
+                    case "circulo":
+                        total = parseFloat(3.14 * val1 * val1)
+                        resp = `Área: ${total}`
+                        break
+                    case "triangulo":
+                        total = parseFloat((val1 * val2) / 2)
+                        resp = `Área: ${total}`
+                        break
+                }
+                
+                document.getElementById("resultado").innerHTML = resp
+            }
+        </script>
+</body>
+</html>
