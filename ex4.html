@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estações do ano</title>
+</head>
+<body>
+    <h1>Descubra a estação do ano</h1>
+    Digite o nº do mês desejado: <input type="number" id="valor" value="1" min="1" max="12">
+    <button onclick="encontrarEstacao()">Encontrar</button>
+    <div id="resposta"></div>
+
+    <script>
+        function encontrarEstacao() {
+            let ansUser = parseInt(document.getElementById("valor").value);
+            let resp = document.getElementById("resposta");
+
+            switch (ansUser) {
+                case 12:
+                case 1:
+                case 2:
+                    resp.innerHTML = "A estação é <strong>Verão</strong>!";
+                    break
+                case 3:
+                case 4:
+                case 5:
+                    resp.innerHTML = "A estação é <strong>Outono</strong>!";
+                    break
+                case 6:
+                case 7:
+                case 8:
+                    resp.innerHTML = "A estação é <strong>Inverno</strong>!";
+                    break
+                case 9:
+                case 10:
+                case 11:
+                    resp.innerHTML = "A estação é <strong>Primavera</strong>!";
+                    break
+                default:
+                    resp.innerHTML = "<strong>Valor inválido</strong>"
+            }
+        }
+    </script>
+</body>
+</html>
