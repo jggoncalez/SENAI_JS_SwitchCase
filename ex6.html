@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de roupas</title>
+</head>
+<body>
+    <h1> Loja de Roupas</h1>
+    <div>
+        <label for="tipoRoupa">Tipo de roupa:</label>
+        <input type="text" id="tipoRoupa" placeholder="Ex: camisa, calça, vestido">
+    </div>
+    <div>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" placeholder="Ex: 1, 2, 3">
+    </div>
+    <div>
+        <button onclick="calcularCompra()">Calcular</button>
+    </div>
+    <div id="resultado" style="margin-top: 20px;"></div>
+    <script>
+        function calcularCompra() {
+            const tipoRoupa = document.getElementById("tipoRoupa").value.trim().toLowerCase();
+            if (!tipoRoupa) {
+                resultadoDiv.innerHTML = "<span style='color: red;'>Por favor, insira um tipo de roupa válido!</span>";
+                return;
+            }
+            const quantidade = parseInt(document.getElementById("quantidade").value);
+            const resultadoDiv = document.getElementById("resultado");
+            let preco = 0;
+    
+            switch (tipoRoupa) {
+                case "camisa":
+                    preco = 50;
+                    break;
+                case "calça":
+                    preco = 80;
+                    break;
+                case "vestido":
+                    preco = 120;
+                    break;
+                default:
+                    resultadoDiv.innerHTML = "<span style='color: red;'>Tipo de roupa inválido!</span>";
+                    return;
+            }
+    
+            if (!quantidade || quantidade <= 0) {
+                resultadoDiv.innerHTML = "<span style='color: red;'>Quantidade inválida!</span>";
+                return;
+            }
+    
+            let total = preco * quantidade;
+    
+            if (total > 100) {
+                total *= 0.9; // Aplica 10% de desconto
+            }
+    
+            resultadoDiv.innerHTML = "O valor final da compra é: <strong>R$ " + total.toFixed(2) + "</strong>";
+        }
+    </script>
+</body>
+</html>
