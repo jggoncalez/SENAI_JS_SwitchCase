@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecânica de Carros</title>
+</head>
+<body>
+    <h1>Mecânica de carros</h1>
+    <div>
+        <div><h3>Informações do carro</h3></div>
+        <div>Marca do carro: <input type="text" id="name" placeholder="Nissan"></div>
+        <div>Modelo: <input type="text" id="model" placeholder="180SX"></div>
+        <div>Ano: <input type="number" id="year" min = 0 max = 9999 placeholder="1994"></div>
+        <label for="fuel">Tipo de combustível:</label>
+        <select id="fuel">
+            <option value="gasolina">Gasolina</option>
+            <option value="etanol">Etanol</option>
+            <option value="eletrico">Elétrico</option>
+            <option value="hibrido">Híbrido</option>
+        </select>
+    <div><button onclick="saveInfo()">Salvar</button></div>
+    <div id="error"></div>
+    </div>
+
+    <h3>Serviços</h3>
+    <div>
+        <label for="services">Serviços:</label>
+        <select id="services">
+            <option value="oleo">Troca de óleo - R$75,00</option>
+            <option value="pneu">Troca de pneus - R$300,00</option>
+            <option value="freios">Revisão dos freios - R$150,00</option>
+            <option value="alinhamento">Alinhamento - R$50,00</option>
+            <option value="bateria">Verificação da bateria - R$60,00</option>
+        </select>
+    </div>
+        <button onclick="saveService()">Salvar</button>
+    </div>
+
+    <h3>Valor final</h3>
+    <div id="resp"></div>
+
+    <script>
+        carInfo = []
+        
+        function saveInfo(){
+            carName = document.getElementById("name").value
+            model = document.getElementById("model").value
+            year = document.getElementById("year").value
+            fuel = document.getElementById("name").value
+
+            switch (true) {
+                case !carName:
+                case !model:
+                case !year:
+                case !fuel:
+                    document.getElementById("error").innerHTML = "Preencha todos os valores";
+                    break;
+                default:
+                    carInfo.push(carName, model, year, fuel);
+                    document.getElementById("error").innerHTML = "";
+                    break;
+            }
+
+            }
+    
+            function saveService(){
+                carServ = document.getElementById("services").value
+                valor = 0
+                switch (carServ) {
+                    case "oleo":
+                        valor = 75.00;
+                        break;
+                    case "pneu":
+                        valor = 300.00;
+                        break;
+                    case "freios":
+                        valor = 150.00;
+                        break;
+                    case "alinhamento":
+                        valor = 50.00;
+                        break;
+                    case "bateria":
+                        valor = 60.00;
+                        break;
+                    default:
+                        valor = 0.00;
+                        break;
+                    }
+                if (valor >=100) {
+                    novoValor = valor * 0.9
+                    document.getElementById("resp").innerHTML = `Valor final: <br> VOCÊ RECEBEU UM DESCONTO DE 10%! <br> <s>${valor}</s> ${novoValor} <br>`
+                } else{
+                    document.getElementById("resp").innerHTML = `Valor final: <br> ${valor}`
+                }
+            }
+    </script>
+
+</body>
+</html>
